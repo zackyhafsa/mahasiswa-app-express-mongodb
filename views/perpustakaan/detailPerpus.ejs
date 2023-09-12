@@ -1,0 +1,15 @@
+<% if (!detail) { %>
+<div class="alert alert-danger mt-3" role="alert">
+  Daftar Peminjam tidak ada, silahkan daftar terlebih dahulu
+</div>
+<% } else {%>
+<div class="card mb-3 mt-3" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title"><%= detail.nama %></h5>
+    <p class="card-text">NPM: <%= detail.npm %></p>
+    <p class="card-text">Kelas: <%= detail.kelas %></p>
+    <p class="card-text">Buku: <%= detail.buku %></p>
+    <a href="/perpus" class="btn btn-primary">&laquo Kembali</a>
+  </div>
+</div>
+<% } %>

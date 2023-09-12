@@ -1,0 +1,50 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Form Daftar Pinjam Buku</h3>
+      <% if (typeof errors !== 'undefined') { %>
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <% errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %>
+      <form method="post" action="/perpus">
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama Lengkap</label>
+          <input type="text" class="form-control" id="nama" name="nama" required />
+        </div>
+        <div class="mb-3">
+          <label for="npm" class="form-label">NPM</label>
+          <input
+            type="text"
+            class="form-control"
+            id="npm"
+            name="npm"
+            maxlength="9"
+            onkeypress="return hanyaAngka(event)"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="kelas" class="form-label">Kelas</label>
+          <input type="text" class="form-control" id="kelas" name="kelas" required />
+        </div>
+        <div class="mb-3">
+          <label for="buku" class="form-label">Buku</label>
+          <input type="text" class="form-control" id="buku" name="buku" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Daftar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function hanyaAngka(event) {
+    var angka = event.which ? event.which : event.keyCode;
+    if (angka != 46 && angka > 31 && (angka < 48 || angka > 57)) return false;
+    return true;
+  }
+</script>

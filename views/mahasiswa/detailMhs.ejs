@@ -1,0 +1,15 @@
+<% if (!detail) { %>
+<div class="alert alert-danger mt-3" role="alert">
+  Daftar Mahasiswa tidak ada, silahkan daftar terlebih dahulu
+</div>
+<% } else {%>
+<div class="card mb-3 mt-3" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title"><%= detail.nama %></h5>
+    <p class="card-text">NPM: <%= detail.npm %></p>
+    <p class="card-text">Kelas: <%= detail.kelas %></p>
+    <p class="card-text">Email: <%= detail.email %></p>
+    <a href="/mhs" class="btn btn-primary">&laquo Kembali</a>
+  </div>
+</div>
+<% } %>

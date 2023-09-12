@@ -1,0 +1,53 @@
+<h1>Perpustakaan</h1>
+<h3>Data peminjaman buku</h3>
+<p>Daftar Peminjam</p>
+<a href="/perpus/add" class="btn btn-primary">Daftar</a>
+<% if (msg.length !== 0) { %>
+<div class="alert alert-success mt-3" role="alert"><%= msg %></div>
+<% } %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Nama</th>
+      <th scope="col">NPM</th>
+      <th scope="col">Buku</th>
+      <th scope="col">Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (perpus.length<1) { %>
+    <tr>
+      <td colspan="4">
+        <div class="alert alert-danger" role="alert">
+          Daftar Mahasiswa tidak ada, silahkan daftar terlebih dahulu
+        </div>
+      </td>
+    </tr>
+    <% } %> <% perpus.forEach((buku, id) => { %>
+    <tr>
+      <th scope="row"><%= id + 1 %></th>
+      <td><%= buku.nama %></td>
+      <td><%= buku.npm %></td>
+      <td><%= buku.buku %></td>
+      <td>
+        <a href="/perpus/detail/<%= buku.npm %>" class="btn btn-success badge rounded-pil"
+          >Detail</a
+        >
+        <form action="/perpus?_method=DELETE" method="post" class="d-inline">
+          <input type="hidden" name="npm" value="<%= buku.npm %>" />
+          <button
+            type="submit"
+            onclick="return confirm('yakin?')"
+            class="btn btn-danger badge rounded-pil"
+          >
+            Hapus
+          </button>
+        </form>
+        <a href="/perpus/edit/<%= buku.npm %>" class="btn btn-warning badge rounded-pil">Edit</a>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
